@@ -26,9 +26,20 @@ type Channel{T} <: AbstractChannel
         end
         new(Condition(), Condition(), :open, Array{T}(0), sz, Array{Condition}(0))
     end
+
+    # deprecated empty constructor
+    function Channel()
+        depwarn(string("The empty constructor Channel() is deprecated. ",
+                        "The channel size needs to be specified explictly. ",
+                        "Defaulting to Channel{$T}(32)."), :Channel)
+        Channel(32)
+    end
 end
 
 Channel(sz) = Channel{Any}(sz)
+
+# deprecated empty constructor
+Channel() = Channel{Any}()
 
 closed_exception() = InvalidStateException("Channel is closed.", :closed)
 

@@ -1023,4 +1023,7 @@ end))
 
 @deprecate is (===)
 
+# NOTE: Deprecation of Channel{T}() is implemented in channels.jl.
+# To be removed from there when 0.6 deprecations are removed.
+
 # End deprecations scheduled for 0.6

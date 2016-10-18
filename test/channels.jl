@@ -20,7 +20,9 @@ pvals = map(i->put!(c,i), 1:10^6)
 tvals = Int[take!(c) for i in 1:10^6]
 @test pvals == tvals
 
-@test_throws MethodError Channel()
+# Uncomment line below once deprecation support has been removed.
+# @test_throws MethodError Channel()
+
 @test_throws ArgumentError Channel(-1)
 @test_throws InexactError Channel(1.5)
 
